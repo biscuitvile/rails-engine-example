@@ -14,7 +14,7 @@
   <tr>
     <td><%= order.product.name %></td>
     <td><%= order.quantity %></td>
-    <td><%= order.user.email %></td>
+    <td><%= order.user.display_name %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
