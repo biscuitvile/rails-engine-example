@@ -2,7 +2,8 @@ EngineTutorial::Application.routes.draw do
 
   devise_for :users
 
-  mount ProductManager::Engine, :at => '/product_manager'
+  mount ProductManager::Engine, :at => '/product_manager',
+                                :as => 'product_manager_engine'
 
   root :to => 'home#index'
   # The priority is based upon order of creation:

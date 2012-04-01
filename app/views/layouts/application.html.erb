@@ -14,6 +14,7 @@
         <a class="brand" href="#">Engine Example</a>
         <div class="nav-collapse">
           <ul class="nav">
+            <li><%= link_to "Products", product_manager_engine.products_path %></li>
           </ul>
           <p class='navbar-text pull-right'><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
         </div>
