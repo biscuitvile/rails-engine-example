@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401004933) do
+ActiveRecord::Schema.define(:version => 20120401012936) do
 
   create_table "product_manager_products", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20120401004933) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "store_orders", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "store_orders", ["product_id"], :name => "index_store_orders_on_product_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
