@@ -16,7 +16,7 @@
           <ul class="nav">
             <li><%= link_to "Products", product_manager_engine.products_path %></li>
           </ul>
-          <p class='navbar-text pull-right'><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
+          <p class='navbar-text pull-right'><%= link_to "Logout", main_app.destroy_user_session_path, :method => :delete %></p>
         </div>
       </div>
     </div>
