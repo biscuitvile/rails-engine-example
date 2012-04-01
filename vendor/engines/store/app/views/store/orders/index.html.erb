@@ -4,6 +4,7 @@
   <tr>
     <th>Product</th>
     <th>Quantity</th>
+    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= order.product.name %></td>
     <td><%= order.quantity %></td>
+    <td><%= order.user.email %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, confirm: 'Are you sure?', method: :delete %></td>
