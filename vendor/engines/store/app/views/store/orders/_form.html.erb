@@ -19,6 +19,11 @@
     <%= f.label :quantity %><br />
     <%= f.number_field :quantity %>
   </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= text_field_tag :display_user_id, current_user.id, :disabled => true %>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
