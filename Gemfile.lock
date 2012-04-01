@@ -1,3 +1,9 @@
+PATH
+  remote: vendor/engines/product_manager
+  specs:
+    product_manager (0.0.1)
+      rails (~> 3.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -129,6 +135,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  product_manager!
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3
