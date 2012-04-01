@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :product %><br />
-    <%= f.text_field :product %>
+    <%= f.select :product_id, ProductManager::Product.all.collect { |p| [p.name, p.id] }, :include_blank => 'Choose a product' %>
   </div>
   <div class="field">
     <%= f.label :quantity %><br />
