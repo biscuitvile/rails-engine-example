@@ -1,8 +1,8 @@
+<p class="well"> Note how this template in the Store engine has a menu to choose products from the Product engine. Provided you reference a model through its appropriate namespace this works as it does normally when no engines are involved.</p>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
       <ul>
       <% @order.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,20 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :product %><br />
-    <%= f.select :product_id, ProductManager::Product.all.collect { |p| [p.name, p.id] }, :include_blank => 'Choose a product' %>
+  <div class="control-group">
+    <%= f.label :product, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :product_id, ProductManager::Product.all.collect {|p| [ "#{p}: #{p.name}", p.id ] }, { :include_blank => true } %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :quantity %><br />
-    <%= f.number_field :quantity %>
+
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :quantity %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= text_field_tag :display_user_id, current_user.id, :disabled => true %>
-    <%= f.hidden_field :user_id, :value => current_user.id%>
-  </div>
+
+  <% if @order.new_record? %>
+    <p class="well"> The current_user method of the host application is used to populate a user_id field here. This can be a potential gotcha as your engine's application controller inherits from ActionController::Base by default. You can override this and inherit from the host's application controller instead, thus gaining access to methods defined there.</p>
+
+    <div class="control-group">
+      <%= f.label :user_id, :class => 'control-label' %>
+
+      <div class="controls">
+        <%= text_field_tag :display_user_id, current_user.id, :disabled => true %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+    </div>
+  <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

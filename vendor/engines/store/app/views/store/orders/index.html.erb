@@ -1,9 +1,18 @@
-<h1>Listing orders</h1>
+<div class="page-header">
+  <h1>Listing orders</h1>
+</div>
 
-<table>
+<div class="well">
+  <p class="help-block">Examine the url here and note that the orders page is namespaced within the Store engine mounted at '/store'. Also note how both the order and product objects are namespaced within their respective engines but the user objects which belong to the host application are not namespaced at all. Despite all of this namespacing in the routing, model and database layer, the order model in the Store engine still maintains normal belongs_to associations to both products and users across the host application and other engines.</p>
+</div>
+
+<table class="table table-bordered table-striped">
   <tr>
-    <th>Product</th>
+    <th>Order Object</th>
+    <th>Product Object</th>
+    <th>Product Name</th>
     <th>Quantity</th>
+    <th>User Object</th>
     <th>User</th>
     <th></th>
     <th></th>
@@ -12,8 +21,11 @@
 
 <% @orders.each do |order| %>
   <tr>
+    <td><%= order %></td>
+    <td><%= order.product %></td>
     <td><%= order.product.name %></td>
     <td><%= order.quantity %></td>
+    <td><%= order.user %></td>
     <td><%= order.user.display_name %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
@@ -24,4 +36,4 @@
 
 <br />
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path, :class => 'btn btn-primary' %>
