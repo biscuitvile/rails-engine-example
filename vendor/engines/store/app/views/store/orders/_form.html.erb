@@ -1,13 +1,10 @@
 <p class="well"> Note how this template in the Store engine has a menu to choose products from the Product engine. Provided you reference a model through its appropriate namespace this works as it does normally when no engines are involved.</p>
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-      <ul>
+    <div class="alert alert-error">
       <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
