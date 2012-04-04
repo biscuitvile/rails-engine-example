@@ -7,7 +7,8 @@ EngineTutorial::Application.routes.draw do
 
   mount Store::Engine, :at => '/store', :as => 'store_engine'
 
-  root :to => 'home#index'
+  root :to => 'product-manager/products#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
