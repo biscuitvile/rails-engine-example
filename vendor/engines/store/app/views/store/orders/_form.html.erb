@@ -23,16 +23,16 @@
   </div>
 
   <% if @order.new_record? %>
-    <p class="well"> The current_user method of the host application is used to populate a user_id field here. This can be a potential gotcha as your engine's application controller inherits from ActionController::Base by default. You can override this and inherit from the host's application controller instead, thus gaining access to methods defined there.</p>
+    <p class="well"> The current_user method of the host application is used to populate a disabled user_id field here. This can be a potential gotcha as your engine's application controller inherits from ActionController::Base by default. You can override this and inherit from the host's application controller instead, thus gaining access to methods defined there.</p>
 
     <div class="control-group">
       <%= f.label :user_id, :class => 'control-label' %>
 
       <div class="controls">
         <%= text_field_tag :display_user_id, current_user.id, :disabled => true %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
       </div>
     </div>
+    <p class="alert alert-error"><strong>Never</strong> pass a user id through a form field in a production application, set the user id in the controller instead.</p>
   <% end %>
   <div class="actions">
     <%= f.submit :class => 'btn btn-primary' %>
